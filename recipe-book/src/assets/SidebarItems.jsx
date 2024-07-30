@@ -1,9 +1,12 @@
 const List = [
   {
+    title: "Recipes",
+  },
+  {
     title: "Add Recipe",
   },
   {
-    title: "Another item",
+    title: "About",
   },
 ];
 
