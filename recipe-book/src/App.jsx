@@ -2,6 +2,7 @@ import "./App.css";
 import List from "./assets/SidebarItems.jsx";
 
 function App() {
+  console.log(document.body.offsetHeight);
   return (
     <div className="App">
       <nav
