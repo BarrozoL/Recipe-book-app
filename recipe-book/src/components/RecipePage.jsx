@@ -1,6 +1,7 @@
 import recipes from "../assets/recipes.json";
 import { useState } from "react";
 import "../App.css";
+import RecipeCard from "./RecipeCard";
 
 export default function RenderRecipe() {
   const [list, setList] = useState(recipes);
@@ -12,15 +13,7 @@ export default function RenderRecipe() {
       {list.length === 0
         ? "No Items"
         : list.map((recipe) => (
-            <div key={recipe.id}>
-              <img src={recipe.image} alt={recipe.name} className="ItemImage" />
-              <p>Name: {recipe.name}</p>
-              <p>Calories: {recipe.calories}</p>
-              <p>Servings: {recipe.servings}</p>
-              <button className="del-btn" onClick={() => removeItem(recipe.id)}>
-                🗑️
-              </button>
-            </div>
+            <RecipeCard recipe={recipe} removeItem={removeItem} />
           ))}
     </div>
   );

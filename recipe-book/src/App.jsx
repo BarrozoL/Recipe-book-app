@@ -3,6 +3,7 @@ import List from "./assets/SidebarItems.jsx";
 import logo from "./assets/Recipe-Papaya-icon.jpeg";
 import RenderRecipe from "./components/RecipePage.jsx";
 import { useState } from "react";
+import HandlePageToggle from "./components/HandlePageToggle.jsx";
 
 function App() {
   const [pageShowing, setPageShowing] = useState("recipe");
@@ -21,10 +22,11 @@ function App() {
         className="RenderPage"
         style={{
           width: document.body.offsetWidth - 300,
-          height: document.body.offsetHeight - 80,
+          height: document.body.offsetHeight - 130,
+          bottom: 50,
         }}
       >
-        {pageShowing === "recipe" ? <RenderRecipe /> : <p>Nothing</p>}
+        <HandlePageToggle showing={pageShowing} />
       </div>
 
       <div className="side-bar" style={{ height: "100%" }}>
