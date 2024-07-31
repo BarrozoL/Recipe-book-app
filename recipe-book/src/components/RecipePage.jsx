@@ -13,7 +13,7 @@ export default function RenderRecipe() {
         ? "No Items"
         : list.map((recipe) => (
             <div key={recipe.id}>
-              <img src={recipe.image} alt={recipe.name} />
+              <img src={recipe.image} alt={recipe.name} className="ItemImage" />
               <p>Name: {recipe.name}</p>
               <p>Calories: {recipe.calories}</p>
               <p>Servings: {recipe.servings}</p>

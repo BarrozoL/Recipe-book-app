@@ -10,6 +10,7 @@
   font-weight: bold;
   color: white;
   gap: 800px;
+  z-index: 5;
 }
 
 .logo {
@@ -50,8 +51,6 @@
   position: absolute;
   top: 80px;
   left: 300px;
-  width: 1630px;
-  height: 820px;
 }
 
 .RecipePage {
@@ -61,6 +60,11 @@
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  gap: 30px;
+  gap: 50px;
   text-align: center;
+}
+
+.ItemImage {
+  width: 150px;
+  height: 150px;
 }

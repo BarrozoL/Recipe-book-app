@@ -17,7 +17,13 @@ function App() {
         <p>Recipe Papaya</p>
       </nav>
 
-      <div className="RenderPage">
+      <div
+        className="RenderPage"
+        style={{
+          width: document.body.offsetWidth - 300,
+          height: document.body.offsetHeight - 80,
+        }}
+      >
         {pageShowing === "recipe" ? <RenderRecipe /> : <p>Nothing</p>}
       </div>
 
