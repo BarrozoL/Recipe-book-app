@@ -2,10 +2,18 @@
   display: flex;
   flex-direction: row;
   background-color: coral;
-  justify-self: left;
   height: 80px;
   position: fixed;
   top: 0;
+  align-items: center;
+  font-size: x-large;
+  font-weight: bold;
+  color: white;
+  gap: 800px;
+}
+
+.logo {
+  width: 80px;
 }
 
 .side-bar {
@@ -26,8 +34,33 @@
 }
 
 .footer {
-  position: absolute;
+  position: fixed;
+  bottom: 0;
   height: 50px;
   background-color: rgb(55, 51, 51);
-  bottom: 0;
+  align-content: center;
+  text-align: center;
+}
+
+.footer a {
+  color: white;
+}
+
+.RenderPage {
+  position: absolute;
+  top: 80px;
+  left: 300px;
+  width: 1630px;
+  height: 820px;
+}
+
+.RecipePage {
+  margin-left: 30px;
+  margin-top: 30px;
+  color: black;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 30px;
+  text-align: center;
 }
