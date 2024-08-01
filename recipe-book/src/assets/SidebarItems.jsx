@@ -1,15 +1,15 @@
 const List = [
   {
     title: "Recipes",
-    func: "recipe",
+    func: "/",
   },
   {
     title: "Add Recipe",
-    func: "addRecipe",
+    func: "/add-recipe",
   },
   {
     title: "About",
-    func: "about",
+    func: "/about",
   },
 ];
 

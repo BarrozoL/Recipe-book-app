@@ -1,0 +1,20 @@
+.item-details img {
+  width: 250px;
+  height: 250px;
+}
+
+.item-details h2 {
+  color: black;
+}
+
+.item-details p {
+  color: black;
+}
+
+.item-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+}

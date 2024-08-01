@@ -1,23 +1,18 @@
 import "./App.css";
-import List from "./assets/SidebarItems.jsx";
-import logo from "./assets/Recipe-Papaya-icon.jpeg";
 import RenderRecipe from "./components/RecipePage.jsx";
-import { useState } from "react";
-import HandlePageToggle from "./components/HandlePageToggle.jsx";
+import recipes from "./assets/recipes.json";
+import Sidebar from "./components/Sidebar.jsx";
+import About from "./components/AboutPage.jsx";
+import NavBar from "./components/Navbar.jsx";
+import { Routes, Route } from "react-router-dom";
+import NotFound from "./components/NotFound.jsx";
+import RecipeDetails from "./components/RecipeDetails.jsx";
+import AddRecipePage from "./components/AddRecipePage.jsx";
 
 function App() {
-  const [pageShowing, setPageShowing] = useState("recipe");
-
   return (
     <div className="App">
-      <nav
-        className="navbar"
-        style={{ width: document.body.offsetWidth, top: 0 }}
-      >
-        <img src={logo} className="logo" />
-        <p>Recipe Papaya</p>
-      </nav>
-
+      <NavBar />
       <div
         className="RenderPage"
         style={{
@@ -26,22 +21,19 @@ function App() {
           bottom: 50,
         }}
       >
-        <HandlePageToggle showing={pageShowing} />
+        <Routes>
+          <Route path="/" element={<RenderRecipe />} />
+          <Route path="/about" element={<About />} />
+          <Route
+            path="/item/:itemId"
+            element={<RecipeDetails items={recipes} />}
+          />
+          <Route path="/add-recipe" element={<AddRecipePage />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
       </div>
+      <Sidebar />
 
-      <div className="side-bar" style={{ height: "100%" }}>
-        {List.map((item, index) => {
-          return (
-            <a
-              className="side-button"
-              key={index}
-              onClick={() => setPageShowing(item.func)}
-            >
-              {item.title}
-            </a>
-          );
-        })}
-      </div>
       <footer className="footer" style={{ width: document.body.offsetWidth }}>
         <a href="https://github.com/BarrozoL/Recipe-book-app" target="_blank">
           GitHub
