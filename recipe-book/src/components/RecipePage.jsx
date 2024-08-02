@@ -1,20 +1,15 @@
-import recipes from "../assets/recipes.json";
-import { useState } from "react";
 import "../App.css";
 import RecipeCard from "./RecipeCard";
 
-export default function RenderRecipe() {
-  const [list, setList] = useState(recipes);
-
-  const removeItem = (id) => setList(list.filter((item) => item.id !== id));
-
+export default function RenderRecipe({ recipes, removeItem }) {
+  console.log(recipes);
   return (
     <div className="RecipePage">
-      {list.length === 0
-        ? "No Items"
-        : list.map((recipe) => (
+      {recipes
+        ? recipes.map((recipe) => (
             <RecipeCard recipe={recipe} removeItem={removeItem} />
-          ))}
+          ))
+        : "No Recipes"}
     </div>
   );
 }

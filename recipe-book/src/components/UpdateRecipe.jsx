@@ -1,19 +1,16 @@
-{
-  /* Dashboard Page (AddRecipe) - A page that the user sees first when they open the app. 
-  It should show the items list that you created previously.*/
-}
-
-import "./AddRecipe.css";
+import { useParams, Navigate, useNavigate } from "react-router-dom";
 import { useState } from "react";
-import { Routes, Route } from "react-router-dom";
-import { v4 as uuidv4 } from "uuid";
 
-export default function AddRecipePage({ submitHandler }) {
-  // something
-  const [name, setName] = useState("");
-  const [calories, setCalories] = useState(0);
-  const [image, setImage] = useState("");
-  const [servings, setServings] = useState(1);
+export default function UpdateRecipe({ data, update }) {
+  const navigate = useNavigate();
+  const { itemId } = useParams();
+  const selectedRecipe = data.find((recipe) => recipe.id === itemId);
+  if (!selectedRecipe) return <Navigate to="/items" />;
+
+  const [name, setName] = useState(selectedRecipe.name);
+  const [calories, setCalories] = useState(selectedRecipe.calories);
+  const [image, setImage] = useState(selectedRecipe.image);
+  const [servings, setServings] = useState(selectedRecipe.servings);
 
   const caloriesHandler = (e) => setCalories(parseInt(e.target.value));
   const nameHandler = (e) => setName(e.target.value);
@@ -24,26 +21,22 @@ export default function AddRecipePage({ submitHandler }) {
     e.preventDefault();
     if (!name.replace(/\s/g, "").length || !calories) return;
     const newRecipe = {
-      id: uuidv4(),
+      id: itemId,
       name: name,
       calories: calories,
       image: image,
       servings: servings,
     };
 
-    setCalories(0);
-    setImage("");
-    setServings(1);
-    setName("");
-
-    submitHandler(newRecipe);
+    update(newRecipe);
+    navigate("/");
   };
 
   return (
     <div className="AddRecipePage">
       <form>
         {/*Create a form component that allows the user to create and add a new item to the items list. 
-      The form component should be displayed on the Dashboard page.*/}
+    The form component should be displayed on the Dashboard page.*/}
         <div className="input-wrapper">
           <label>* Name:</label>
           <input type="text" name="name" value={name} onChange={nameHandler} />

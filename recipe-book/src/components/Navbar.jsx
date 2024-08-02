@@ -1,3 +1,7 @@
+{
+  /* The Navbar (Navbar) component that displays the app’s name and logo.*/
+}
+
 import logo from "../assets/Recipe-Papaya-icon.jpeg";
 import "../App.css";
 import { Link } from "react-router-dom";

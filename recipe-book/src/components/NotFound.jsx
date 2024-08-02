@@ -1,3 +1,7 @@
+{
+  /* Not Found Page (NotFound) - A page that renders whenever a user navigates to a URL route that doesn’t exist in the app.*/
+}
+
 import React from "react";
 import "../index.css";
 

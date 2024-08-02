@@ -1,0 +1,45 @@
+/* Dashboard Page (AddRecipe) - styling css*/
+
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 400px;
+  margin: 0 auto;
+  border-radius: 20px;
+  padding: 40px;
+}
+form .input-wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+form label {
+  color: black;
+  font-size: 14px;
+}
+form input {
+  padding: 10px;
+  border-radius: 10px;
+  border: 2px solid #bbb;
+  border-color: #bbb #ececec #ececec #bbb;
+  background-color: white;
+  color: #1a1a1a;
+  margin-bottom: 20px;
+}
+form button {
+  padding: 10px;
+  width: 100%;
+  border-radius: 10px;
+  border: none;
+  background-color: #646cff;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+form button:hover {
+  background-color: #535bf2;
+}

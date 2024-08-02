@@ -1,3 +1,7 @@
+{
+  /*  */
+}
+
 import { Link } from "react-router-dom";
 
 export default function RecipeCard({ recipe, removeItem }) {
@@ -10,7 +14,7 @@ export default function RecipeCard({ recipe, removeItem }) {
         <p>Calories: {recipe.calories}</p>
         <p>Servings: {recipe.servings}</p>
       </Link>
-      <button className="del-btn" onClick={() => removeItem(recipe.id)}>
+      <button className="del-btn" onClick={() => removeItem(recipe)}>
         🗑️
       </button>
     </div>

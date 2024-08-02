@@ -1,3 +1,7 @@
+{
+  /*The Sidebar (Sidebar) component with the links to the Home and About page.*/
+}
+
 import List from "../assets/SidebarItems.jsx";
 import { Link } from "react-router-dom";
 
