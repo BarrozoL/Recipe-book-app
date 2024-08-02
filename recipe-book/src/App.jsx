@@ -9,6 +9,7 @@ import NotFound from "./components/NotFound.jsx";
 import RecipeDetails from "./components/RecipeDetails.jsx";
 import AddRecipePage from "./components/AddRecipePage.jsx";
 import UpdateRecipe from "./components/UpdateRecipe.jsx";
+import Footer from "./components/Footer.jsx";
 import { useState } from "react";
 
 function App() {
@@ -60,13 +61,7 @@ function App() {
         </Routes>
       </div>
       <Sidebar />
-
-      <footer className="footer" style={{ width: document.body.offsetWidth }}>
-        {/* The Footer component with the link to the GitHub repository of the project. */}
-        <a href="https://github.com/BarrozoL/Recipe-book-app" target="_blank">
-          GitHub
-        </a>
-      </footer>
+      <Footer />
     </div>
   );
 }

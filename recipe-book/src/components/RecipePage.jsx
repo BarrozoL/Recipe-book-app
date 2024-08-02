@@ -1,15 +1,11 @@
+{
+  /*Conditionally render content in the list items (RecipePage)*/
+}
+
 import "../App.css";
-import RecipeCard from "./RecipeCard";
+import RecipeList from "./RecipeList";
 
 export default function RenderRecipe({ recipes, removeItem }) {
   console.log(recipes);
-  return (
-    <div className="RecipePage">
-      {recipes
-        ? recipes.map((recipe) => (
-            <RecipeCard recipe={recipe} removeItem={removeItem} />
-          ))
-        : "No Recipes"}
-    </div>
-  );
+  return <RecipeList recipes={recipes} removeItem={removeItem} />;
 }
