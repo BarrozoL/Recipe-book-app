@@ -5,6 +5,7 @@
 
 import "./AddRecipe.css";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
 
 export default function AddRecipePage({ submitHandler }) {
@@ -18,6 +19,8 @@ export default function AddRecipePage({ submitHandler }) {
   const nameHandler = (e) => setName(e.target.value);
   const imageHandler = (e) => setImage(e.target.value);
   const servingsHandler = (e) => setServings(parseInt(e.target.value));
+
+  const nav = useNavigate();
 
   const objectWrapper = (e) => {
     e.preventDefault();
@@ -36,6 +39,7 @@ export default function AddRecipePage({ submitHandler }) {
     setName("");
 
     submitHandler(newRecipe);
+    nav("/");
   };
 
   return (
