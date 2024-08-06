@@ -1,16 +1,16 @@
-import "./App.css";
-import RenderRecipe from "./components/RecipePage.jsx";
-import recipes from "./assets/recipes.json";
-import Sidebar from "./components/Sidebar.jsx";
-import About from "./components/AboutPage.jsx";
-import NavBar from "./components/Navbar.jsx";
-import { Routes, Route } from "react-router-dom";
-import NotFound from "./components/NotFound.jsx";
-import RecipeDetails from "./components/RecipeDetails.jsx";
-import AddRecipePage from "./components/AddRecipePage.jsx";
-import UpdateRecipe from "./components/UpdateRecipe.jsx";
-import Footer from "./components/Footer.jsx";
-import { useState } from "react";
+import "./App.css"; /*Import the necessary CSS file for styling the "App" component */
+import RenderRecipe from "./components/RecipePage.jsx"; /* Import the "RecipePage" component */
+import recipes from "./assets/recipes.json"; /* Import recipe data from "recipes.json" */
+import Sidebar from "./components/Sidebar.jsx"; /* Import the "Sidebar" component */
+import About from "./components/AboutPage.jsx"; /* Import the "AboutPage" component */
+import NavBar from "./components/Navbar.jsx"; /* Import the "Navbar" component */
+import { Routes, Route } from "react-router-dom"; /* Import components for routing from the "react-router-dom" library  */
+import NotFound from "./components/NotFound.jsx"; /* Import the "NotFound" component */
+import RecipeDetails from "./components/RecipeDetails.jsx"; /* Import the "RecipeDetails" component */
+import AddRecipePage from "./components/AddRecipePage.jsx"; /* Import the "AddRecipePage" component */
+import UpdateRecipe from "./components/UpdateRecipe.jsx"; /* Import the "UpdateRecipe" component */
+import Footer from "./components/Footer.jsx"; /* Import the "Footer" component */
+import { useState } from "react"; /* Import "useState" hook to manage state within functional components */
 
 function App() {
   const [data, setData] = useState(recipes);
