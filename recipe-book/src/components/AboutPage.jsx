@@ -18,7 +18,7 @@ export default function About() {
     {
       name: "Carlos Carvalho",
       age: 28,
-      interests: "Food, Music, Games, Hiking, Nutrition, and working out",
+      interests: "Food, Music, Games, Hiking, Computer and working out",
       image:
         "https://ca.slack-edge.com/T01BAR6KJP4-U07866FMMUP-gc4092cfc557-512",
     },
