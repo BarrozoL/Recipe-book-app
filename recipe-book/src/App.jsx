@@ -12,13 +12,20 @@ import UpdateRecipe from "./components/UpdateRecipe.jsx"; /* Import the "UpdateR
 import Footer from "./components/Footer.jsx"; /* Import the "Footer" component */
 import { useState } from "react"; /* Import "useState" hook to manage state within functional components */
 
-function App() {
-  const [data, setData] = useState(recipes);
+function App() { /* Defining "App" component */
+  const [data, setData] = useState(recipes);  /* State to manage and display the list of recipes */
+  /* The const "data" holds the current list of "recipes" */
+  /* The function "setData" updates the list of recipes
+  and triggers a re-render of the "App" component with the new data (each time is called) */
 
-  const submitHandler = (recipe) => {
-    // something
-    setData([...data, recipe]);
+  const submitHandler = (recipe) => {   /* Function to add a new recipe to the list */
+    setData([...data, recipe]); /* Adds the new recipe to the existing list */
   };
+  /* "submitHandler" is a function passed as a prop to "AddRecipePage" function in "AddRecipePage" component */
+  /* "Recipe" is The new recipe object created in "AddRecipePage" when the form is submitted */
+  /* When the form is submitted, "submitHandler" is called with the new recipe,
+  allowing the "App" component to update its state and include the new recipe in the list */
+
   const removeItem = (item) =>
     setData(data.filter((recipe) => recipe.id !== item.id));
 

@@ -6,8 +6,8 @@ including links to your GitHub and LinkedIn profiles. */
 import "./AboutPage.css"; /* Import the necessary CSS file for styling the About page */
 
 
-export default function About() { //Defining and exporting About component
-  const developers = [  //Define an array of developer objects, each containing details about a team member
+export default function About() { /* Defining and exporting "About" component */
+  const developers = [  /* Define an array of developer objects, each containing details about a team member */
     {
       name: "Lucas Barrozo",
       age: 25,
@@ -35,11 +35,11 @@ export default function About() { //Defining and exporting About component
 
 
 
-  return (  //Return the JSX to render the About page
+  return (  /*Return the JSX to render the About page */
     <div className="about-page">
       <h1>Meet the Team</h1>
-      {developers.map((dev, index) => ( //Loop over each developer in the developers array
-        <div key={index} className="profile-wrap"> {/*Create a "div" for each developer profile with a unique key and a class for CSS styling*/}
+      {developers.map((dev, index) => ( /* Loop over each developer in the developers array */
+        <div key={index} className="profile-wrap"> {/* Create a "div" for each developer profile with a unique key and a class for CSS styling */}
           <img src={dev.image} alt={dev.name} />
           <h3>{dev.name}</h3>
           <p>
