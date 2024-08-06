@@ -3,7 +3,7 @@ including links to your GitHub and LinkedIn profiles.*/
 
 
 
-import "./AboutPage.css"; //Import the necessary CSS file for styling the About page
+import "./AboutPage.css"; /* Import the necessary CSS file for styling the About page */
 
 
 export default function About() { //Defining and exporting About component
