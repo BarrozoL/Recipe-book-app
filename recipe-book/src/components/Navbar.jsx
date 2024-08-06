@@ -13,7 +13,7 @@ export default function NavBar() {
       style={{ width: document.body.offsetWidth, top: 0 }}
     >
       <Link to="/">
-        <img src={logo} className="logo" />
+        <img src={logo} className="logo" alt="logo" />
       </Link>
       <p>Recipe Papaya</p>
     </nav>
