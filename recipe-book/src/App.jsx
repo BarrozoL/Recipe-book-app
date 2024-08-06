@@ -31,7 +31,7 @@ function App() {
   return (
     <div className="App">
       <NavBar />
-      <div
+      <div /*RENDERIZAÇÃO DAS ROUTES COM O NAVBAR/SIDEBAR/FOOTER ???????????????????????????? */ 
         className="RenderPage"
         style={{
           width: document.body.offsetWidth - 300,
