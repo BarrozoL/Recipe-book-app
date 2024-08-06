@@ -9,7 +9,13 @@ export default function RecipeCard({ recipe, removeItem }) {
   return (
     <div key={recipe.id}>
       <Link to={`/item/${recipe.id}`}>
-        <img src={recipe.image} alt={recipe.name} className="ItemImage" />
+        <img
+          src={recipe.image}
+          alt={recipe.name}
+          className="ItemImage"
+          style={{ borderRadius: "50%" }}
+        />
+
         <p>Name: {recipe.name}</p>
         <p>Calories: {recipe.calories}</p>
         <p>Servings: {recipe.servings}</p>
