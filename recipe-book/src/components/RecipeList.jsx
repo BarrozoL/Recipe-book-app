@@ -8,8 +8,8 @@ export default function RecipeList({ recipes, removeItem }) {
   return (
     <div className="RecipePage">
       {recipes
-        ? recipes.map((recipe) => (
-            <RecipeCard recipe={recipe} removeItem={removeItem} />
+        ? recipes.map((recipe, index) => (
+            <RecipeCard key={index} recipe={recipe} removeItem={removeItem} />
           ))
         : "No Recipes"}
       {/* Include a condition to conditionally render content on each item in the list. For example, 
