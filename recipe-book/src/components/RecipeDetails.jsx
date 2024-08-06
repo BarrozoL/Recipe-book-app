@@ -13,7 +13,11 @@ export default function RecipeDetails({ items }) {
   return (
     <div className="item-wrapper">
       <div className="item-details">
-        <img src={selectedItem.image} alt={selectedItem.name} />
+        <img
+          src={selectedItem.image}
+          alt={selectedItem.name}
+          style={{ borderRadius: "50%" }}
+        />
         <h2>
           {selectedItem.name}{" "}
           <Link to={`/item/${selectedItem.id}/update`}>✏️</Link>
