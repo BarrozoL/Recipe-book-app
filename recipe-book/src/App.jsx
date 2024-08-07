@@ -26,49 +26,61 @@ function App() { /* Defining "App" component */
   /* When the form is submitted, "submitHandler" is called with the new recipe,
   allowing the "App" component to update its state and include the new recipe in the list */
 
-  const removeItem = (item) =>
+  const removeItem = (item) =>  /* Function to remove a recipe */
     setData(data.filter((recipe) => recipe.id !== item.id));
+    /* Create a new array: the "filter" method goes through each recipe in the "data" array and
+    includes only those recipes that the id does not match the id of the item passed to the function.
+    The new array formed is like a trash container array with not matched id's */
+  /* The function action occurs when gets triggered by the button with className of "del-btn" in "RecipeCard" component */
 
-  const update = (item) => {
+  const update = (item) => {  /* Function to update a recipe */
     const updatedItem = data.map((recipe) =>
       recipe.id === item.id ? item : recipe
     );
     setData(updatedItem);
   };
+/* Creates a new array: the "map" method goes through each recipe in the "data" array and
+for each recipe, it checks if the recipe.id matches the item.id.
+If there is a match, it replaces the existing recipe with the new item (the updated recipe).
+If there is no match, it keeps the recipe unchanged */
+/* setData will be updated, and the "App" component will re-render to display the updated information. */
+  
   return (
     <div className="App">
-      <NavBar />
+      <NavBar /> {/* "NavBar" component renderization */}
       <div /*RENDERIZAÇÃO DAS ROUTES COM O NAVBAR/SIDEBAR/FOOTER ???????????????????????????? */ 
         className="RenderPage"
         style={{
-          width: document.body.offsetWidth - 300,
-          height: document.body.offsetHeight - 130,
-          bottom: 50,
+          width: document.body.offsetWidth - 300, /* Adjusts the width of the "div" to be the full width of the body less 300 pixels.*/
+          height: document.body.offsetHeight - 130, /* Adjusts the height of the "div" to be the full height of the body less 130 pixels */
+          bottom: 50, /* Set the bottom "offset" of the "div to 50 pixels.
+          Sets a vertical "offset" from the bottom edge. It ensures that the "div" maintains a consistent margin from the bottom,
+          allowing space for the "Footer" component */
         }}
       >
-        <Routes>
+        <Routes>  {/* Defining "Routes" to render different components based on the URL path */}
           <Route
             path="/"
-            element={<RenderRecipe recipes={data} removeItem={removeItem} />}
+            element={<RenderRecipe recipes={data} removeItem={removeItem} />} /* Renders the  */
           />
-          <Route path="/about" element={<About />} />
+          <Route path="/about" element={<About />} /> {/* Renders the About page */}
           <Route
             path="/item/:itemId/update"
-            element={<UpdateRecipe data={data} update={update} />}
+            element={<UpdateRecipe data={data} update={update} />} /* Renders the "UpdateRecipe" component */
           />
           <Route
             path="/item/:itemId"
-            element={<RecipeDetails items={data} />}
+            element={<RecipeDetails items={data} />} /* Renders the "RecipePage" component*/
           />
           <Route
             path="/add-recipe"
-            element={<AddRecipePage submitHandler={submitHandler} />}
+            element={<AddRecipePage submitHandler={submitHandler} />}  /* Renders the "AddRecipePage" component */
           />
-          <Route path="*" element={<NotFound />} />
+          <Route path="*" element={<NotFound />} /> {/* Renders the "NotFound" component */}
         </Routes>
       </div>
-      <Sidebar />
-      <Footer />
+      <Sidebar /> {/* Renders the "Sidebar" component */}
+      <Footer /> {/* Renders the "Footer" component */}
     </div>
   );
 }
