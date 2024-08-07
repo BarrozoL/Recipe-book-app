@@ -76,3 +76,9 @@
   width: 150px;
   height: 150px;
 }
+
+textarea {
+  background-color: darkgrey;
+  color: black;
+  font-size: 15px;
+}
