@@ -11,13 +11,24 @@ export default function UpdateRecipe({ data, update }) {
   const [calories, setCalories] = useState(selectedRecipe.calories);
   const [image, setImage] = useState(selectedRecipe.image);
   const [servings, setServings] = useState(selectedRecipe.servings);
+  const [instructions, setInstructions] = useState(
+    selectedRecipe.instructions.join("\n")
+  );
 
   const caloriesHandler = (e) => setCalories(parseInt(e.target.value));
   const nameHandler = (e) => setName(e.target.value);
   const imageHandler = (e) => setImage(e.target.value);
   const servingsHandler = (e) => setServings(parseInt(e.target.value));
+  const instructionsHandler = (e) => {
+    const string = e.target.value;
+
+    setInstructions(string);
+  };
 
   const objectWrapper = (e) => {
+    const instructArr = instructions
+      .split("\n")
+      .filter((instr) => instr.trim() !== "");
     e.preventDefault();
     if (!name.replace(/\s/g, "").length || !calories) return;
     const newRecipe = {
@@ -26,6 +37,7 @@ export default function UpdateRecipe({ data, update }) {
       calories: calories,
       image: image,
       servings: servings,
+      instructions: instructArr,
     };
 
     update(newRecipe);
@@ -67,6 +79,16 @@ export default function UpdateRecipe({ data, update }) {
             name="servings"
             value={servings}
             onChange={servingsHandler}
+          />
+        </div>
+        <div className="input-wrapper">
+          <label>Instructions:</label>
+          <textarea
+            name="instructions"
+            value={instructions}
+            onChange={instructionsHandler}
+            rows={10}
+            cols={40}
           />
         </div>
         <button onClick={objectWrapper}>Submit</button>
