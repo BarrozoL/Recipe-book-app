@@ -1,14 +1,16 @@
-/* (AddRecipe) - A page that the user see when click on "Add Recipe" at "Sidebar" */ 
+/* (AddRecipe) - A page that the user see when click on "Add Recipe" at "Sidebar" */
 /* User should see the "Form", a component to create and add a new recipe */
 
+
+
 import "./AddRecipe.css"; /* Import the necessary CSS file for styling the About page */
-import { useState } from "react"; /* Import the "useState" hook from React to manage component state ????????????????????????????????? */
-import { v4 as uuidv4 } from "uuid"; /* Import uuidv4 function to generate unique IDs for new recipes ??????????????????????????????? */
+import { useState } from "react"; /* Import the "useState" hook from React to manage component state */
+import { v4 as uuidv4 } from "uuid"; /* Import uuidv4 function to generate unique IDs for new recipes */
 
 export default function AddRecipePage({ submitHandler }) { /* Defining and exporting AddRecipePage component */
 /* "AddRecipePage" is the function that handles the "form" submission, acting as a submit handler function for the "form" */
-/* "submitHander" is a prop form "AddrecipePage" ?????????????????????????????????????????????? */  
-  /* State variables to manage the form inputs ???????????????????????????????????????????????? */
+/* "submitHander" is a prop form "AddRecipePage" */  
+  /* State variables to manage the form inputs */
   const [name, setName] = useState(""); /* "useState" initializes the state variable with an empty string ("") */
   const [calories, setCalories] = useState(0); /* "useState" initializes the state variable with an empty string ("0") */
   const [image, setImage] = useState(""); /* "useState" initializes the state variable with an empty string ("") */
@@ -24,12 +26,12 @@ export default function AddRecipePage({ submitHandler }) { /* Defining and expor
     e.preventDefault(); /* When a form is submitted by default, the browser performs a default action,
     which is to send a request to the server and reload the page.
     "e.preventDefault()""; stops the default behavior from occurring. */
-    if (!name.replace(/\s/g, "").length || !calories) return; /* ?????????????????????????????????????????????????????????? */
+    if (!name.replace(/\s/g, "").length || !calories) return;
     /* The if statement validates that the "name" is not empty and "calories" are set to valid values. */
     /* If one of above conditions fails, the "return" statement exits the handleSubmit function immediately */
     /* This validation helps prevent errors and assures that only valid data is processed and submitted. */
     const newRecipe = { /* Create a new recipe object with the current state values */
-      id: uuidv4(), /* Generate a unique ID for the new recipe ???????????????????????????????????????????? */
+      id: uuidv4(), /* Generate a unique ID for the new recipe */
       name: name, // Recipe name from state
       calories: calories, // Recipe calories from state
       image: image, // Recipe image URL from state

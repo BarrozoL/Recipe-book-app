@@ -1,6 +1,11 @@
-{
-  /*Make the list a separate component by extracting the code for better code organization (for example, <List />).*/
-}
+/* Make the list a separate component by extracting the code for better code organization (for example, <List />).
+In this case "RecipeList" */
+
+
+/* The "RecipeList" component renders a list of "RecipeCard" component for each recipe in the recipes array,
+providing the ability to remove individual recipes.
+If no recipes are available it will displays "No Recipes" */
+
 
 import RecipeCard from "./RecipeCard.jsx";
 

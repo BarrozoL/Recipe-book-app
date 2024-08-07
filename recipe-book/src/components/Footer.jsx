@@ -1,7 +1,9 @@
 /* The Footer component with the link to the GitHub repository of the project. */
 
+
+
 export default function Footer() { /* Define and export the Footer component */
-  return ( /* The Footer component returns JSX to render the footer element ????????????????????????????????????????? */
+  return ( /* The Footer component returns JSX to render the footer element */
 
     <footer className="footer" style={{ width: document.body.offsetWidth }}>
       {/* sets the width of the "Footer" element to be equal to the width of the "body" of the document.

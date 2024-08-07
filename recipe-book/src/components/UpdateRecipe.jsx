@@ -1,3 +1,9 @@
+/* The "UpdateRecipe" component allows users to update an existing recipe's details.
+It retrieves the recipe to be updated based on the route parameter, manages form state for the updated information
+and updates the recipe in the list of reciepes after form submission. */
+
+
+
 import { useParams, Navigate, useNavigate } from "react-router-dom";
 import { useState } from "react";
 
@@ -35,9 +41,6 @@ export default function UpdateRecipe({ data, update }) {
   return (
     <div className="AddRecipePage">
       <form>
-        {/*Create a form component that allows the user to create and add a new item to the items list. 
-    The form component should be displayed on the Dashboard page.*/}
-        {/*Create a form component that allows the user to update an existing item from the items list.*/}
         <div className="input-wrapper">
           <label>* Name:</label>
           <input type="text" name="name" value={name} onChange={nameHandler} />

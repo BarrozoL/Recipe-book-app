@@ -48,7 +48,7 @@ If there is no match, it keeps the recipe unchanged */
   return (
     <div className="App">
       <NavBar /> {/* "NavBar" component renderization */}
-      <div /*RENDERIZAÇÃO DAS ROUTES COM O NAVBAR/SIDEBAR/FOOTER ???????????????????????????? */ 
+      <div
         className="RenderPage"
         style={{
           width: document.body.offsetWidth - 300, /* Adjusts the width of the "div" to be the full width of the body less 300 pixels.*/
@@ -82,6 +82,12 @@ If there is no match, it keeps the recipe unchanged */
       <Sidebar /> {/* Renders the "Sidebar" component */}
       <Footer /> {/* Renders the "Footer" component */}
     </div>
+    /* The order of placing components matter, for example, put "Footer" before the "NavBar" will affect the layout and
+    behavior of the page, however, with CSS "position: fixed;" the "HTML" order doesn't matter for visual placement,
+    but it does matter for document structure and accessibility */
+    
+    /* Separating "Navbar", "Sidebar" and "Footer" from the "div" with className "RenderPage" alows the individual layout,
+    positioning and styling CSS of these components */    
   );
 }
-export default App;
+export default App; /* Exporting "App" component */
