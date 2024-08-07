@@ -5,6 +5,7 @@
 
 import "./AddRecipe.css"; /* Import the necessary CSS file for styling the About page */
 import { useState } from "react"; /* Import the "useState" hook from React to manage component state */
+import { useNavigate } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid"; /* Import uuidv4 function to generate unique IDs for new recipes */
 
 export default function AddRecipePage({ submitHandler }) { /* Defining and exporting AddRecipePage component */
@@ -15,12 +16,15 @@ export default function AddRecipePage({ submitHandler }) { /* Defining and expor
   const [calories, setCalories] = useState(0); /* "useState" initializes the state variable with an empty string ("0") */
   const [image, setImage] = useState(""); /* "useState" initializes the state variable with an empty string ("") */
   const [servings, setServings] = useState(1); /* "useState" initializes the state variable with an empty string ("1") */
+  const [instructions, setInstructions] = useState([]);
 
   /* Event handlers to update state based on user input */
   const caloriesHandler = (e) => setCalories(parseInt(e.target.value));  /* Update "calories" state */
   const nameHandler = (e) => setName(e.target.value);  /* Update "name" state */
   const imageHandler = (e) => setImage(e.target.value);  /* Update "image" state */
   const servingsHandler = (e) => setServings(parseInt(e.target.value));  /* Update "servings" state */
+  const instructionsHandler = (e) => setInstructions(e.target.value);
+  const nav = useNavigate();
 
   const objectWrapper = (e) => { /* Function to handle the "Form" submission */
     e.preventDefault(); /* When a form is submitted by default, the browser performs a default action,
@@ -30,12 +34,18 @@ export default function AddRecipePage({ submitHandler }) { /* Defining and expor
     /* The if statement validates that the "name" is not empty and "calories" are set to valid values. */
     /* If one of above conditions fails, the "return" statement exits the handleSubmit function immediately */
     /* This validation helps prevent errors and assures that only valid data is processed and submitted. */
+    
+    const instructArr = instructions
+      .split("\n")
+      .filter((instr) => instr.trim() !== "");
+    
     const newRecipe = { /* Create a new recipe object with the current state values */
       id: uuidv4(), /* Generate a unique ID for the new recipe */
       name: name, // Recipe name from state
       calories: calories, // Recipe calories from state
       image: image, // Recipe image URL from state
       servings: servings, // Recipe servings from state
+      instructions: instructArr,
     };
 
     /* Clear the form fields by resetting state values */
@@ -46,11 +56,13 @@ export default function AddRecipePage({ submitHandler }) { /* Defining and expor
 
     submitHandler(newRecipe); /* When "submitHandler(newRecipe)"" is called, "newRecipe" object is passed as an argument to the "submitHandler" prop,
     This means that the "AddRecipePage" function receives the "newRecipe" object and can use it as needed. */
+    nav("/");
+    
   };
 
   return (
     <div className="AddRecipePage">
-      <form>  {/* Form component to create and add a new recipe */}
+      <form onSubmit={objectWrapper}> {/* Form component to create and add a new recipe */}
         <div className="input-wrapper">
           <label>* Name:</label>  {/* Input field for recipe name */}
           <input
@@ -90,8 +102,18 @@ export default function AddRecipePage({ submitHandler }) { /* Defining and expor
             onChange={servingsHandler} /* const "servingsHandler" should be called whenever the value of the input changes */
           />
         </div>
-        
-        <button onClick={objectWrapper}>Submit</button> {/* Submit button to trigger form submission */}
+
+        <div className="input-wrapper">
+          <label>Instructions:</label>
+          <textarea
+            name="instructions"
+            value={instructions}
+            onChange={instructionsHandler}
+            rows={10}
+            cols={40}
+          />
+        </div>
+        <button type="submit">Submit</button> {/* Submit button to trigger form submission */}
       </form>
     </div>
   );

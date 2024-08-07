@@ -14,10 +14,11 @@ export default function RecipeCard({ recipe, removeItem }) { /* Define and expor
   return (
     <div key={recipe.id}> {/*Create a "div" for each recipe card, with a unique key for each recipe */}
       <Link to={`/item/${recipe.id}`}> {/* "Link" component to navigate to the detailed page of the recipe */}
-        <img src={recipe.image} alt={recipe.name} className="ItemImage" /> {/* Image of the recipe */}
+        <img src={recipe.image} alt={recipe.name} className="ItemImage" style={{ borderRadius: "50%" }} /> {/* Image of the recipe */}
         <p>Name: {recipe.name}</p> {/* Display the name of the recipe */}
         <p>Calories: {recipe.calories}</p> {/* Display the calories of the recipe */}
         <p>Servings: {recipe.servings}</p> {/* Display the number of servings of the recipe */}
+        <p>Click to see instructions...</p>
       </Link>
       <button className="del-btn" onClick={() => removeItem(recipe)}> {/* Button to delete the recipe */}
         🗑️ {/* Trash emoji for delete button */}

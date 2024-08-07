@@ -17,7 +17,7 @@ export default function NavBar() { /* Define and export the NavBar component */
         "top: 0" sets the vertical position of the element to the top of its containing element */
     >
       <Link to="/"> {/* "Link" component for navigation to the "home page" */}
-        <img src={logo} className="logo" /> {/* Display the logo image */}
+        <img src={logo} className="logo" alt="logo" /> {/* Display the logo image */}
       </Link>
       <p>Recipe Papaya</p> {/* Display the app's name */}
     </nav>

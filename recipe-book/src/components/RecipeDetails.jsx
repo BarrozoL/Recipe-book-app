@@ -8,6 +8,7 @@ It navigates to a "not found" page if the recipe doesn't exist and provides a li
 import { useParams, Navigate } from "react-router-dom";
 import "./RecipeDetails.css";
 import { Link } from "react-router-dom";
+import Instruction from "./Instructions";
 
 export default function RecipeDetails({ items }) {
   const { itemId } = useParams();
@@ -18,13 +19,18 @@ export default function RecipeDetails({ items }) {
   return (
     <div className="item-wrapper">
       <div className="item-details">
-        <img src={selectedItem.image} alt={selectedItem.name} />
+        <img
+          src={selectedItem.image}
+          alt={selectedItem.name}
+          style={{ borderRadius: "50%" }}
+        />
         <h2>
           {selectedItem.name}{" "}
           <Link to={`/item/${selectedItem.id}/update`}>✏️</Link>
         </h2>
         <p>Calories: {selectedItem.calories}</p>
         <p>Servings: {selectedItem.servings}</p>
+        <Instruction item={selectedItem} />
       </div>
     </div>
   );

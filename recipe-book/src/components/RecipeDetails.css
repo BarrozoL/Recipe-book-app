@@ -20,3 +20,7 @@
   align-items: center;
   margin-top: 50px;
 }
+
+.item-details li {
+  color: black;
+}
