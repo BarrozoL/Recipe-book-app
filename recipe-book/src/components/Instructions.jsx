@@ -1,7 +1,7 @@
 export default function Instruction({ item }) {
   const instructions =
-    item.instructions.split(".,").length > 0
-      ? item.instructions.split(".,")
+    typeof item.instructions === "string"
+      ? item.instructions.split("\n").filter((instr) => instr.trim() !== "")
       : item.instructions;
   console.log(item, instructions);
 

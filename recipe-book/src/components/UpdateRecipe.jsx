@@ -20,17 +20,17 @@ export default function UpdateRecipe({ data, update }) {
   const imageHandler = (e) => setImage(e.target.value);
   const servingsHandler = (e) => setServings(parseInt(e.target.value));
   const instructionsHandler = (e) => {
-    const string = e.target.value;
-
-    setInstructions(string);
+    setInstructions(e.target.value);
   };
 
   const objectWrapper = (e) => {
+    e.preventDefault();
+    if (!name.replace(/\s/g, "").length || !calories) return;
+
     const instructArr = instructions
       .split("\n")
       .filter((instr) => instr.trim() !== "");
-    e.preventDefault();
-    if (!name.replace(/\s/g, "").length || !calories) return;
+
     const newRecipe = {
       id: itemId,
       name: name,
@@ -46,10 +46,7 @@ export default function UpdateRecipe({ data, update }) {
 
   return (
     <div className="AddRecipePage">
-      <form>
-        {/*Create a form component that allows the user to create and add a new item to the items list. 
-    The form component should be displayed on the Dashboard page.*/}
-        {/*Create a form component that allows the user to update an existing item from the items list.*/}
+      <form onSubmit={objectWrapper}>
         <div className="input-wrapper">
           <label>* Name:</label>
           <input type="text" name="name" value={name} onChange={nameHandler} />
@@ -91,7 +88,7 @@ export default function UpdateRecipe({ data, update }) {
             cols={40}
           />
         </div>
-        <button onClick={objectWrapper}>Submit</button>
+        <button type="submit">Submit</button>
       </form>
     </div>
   );

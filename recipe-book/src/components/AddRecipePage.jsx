@@ -14,23 +14,29 @@ export default function AddRecipePage({ submitHandler }) {
   const [calories, setCalories] = useState(0);
   const [image, setImage] = useState("");
   const [servings, setServings] = useState(1);
+  const [instructions, setInstructions] = useState([]);
 
   const caloriesHandler = (e) => setCalories(parseInt(e.target.value));
   const nameHandler = (e) => setName(e.target.value);
   const imageHandler = (e) => setImage(e.target.value);
   const servingsHandler = (e) => setServings(parseInt(e.target.value));
+  const instructionsHandler = (e) => setInstructions(e.target.value);
 
   const nav = useNavigate();
 
   const objectWrapper = (e) => {
     e.preventDefault();
     if (!name.replace(/\s/g, "").length || !calories) return;
+    const instructArr = instructions
+      .split("\n")
+      .filter((instr) => instr.trim() !== "");
     const newRecipe = {
       id: uuidv4(),
       name: name,
       calories: calories,
       image: image,
       servings: servings,
+      instructions: instructArr,
     };
 
     setCalories(0);
@@ -44,7 +50,7 @@ export default function AddRecipePage({ submitHandler }) {
 
   return (
     <div className="AddRecipePage">
-      <form>
+      <form onSubmit={objectWrapper}>
         {/*Create a form component that allows the user to create and add a new item to the items list. 
       The form component should be displayed on the Dashboard page.*/}
         <div className="input-wrapper">
@@ -78,7 +84,17 @@ export default function AddRecipePage({ submitHandler }) {
             onChange={servingsHandler}
           />
         </div>
-        <button onClick={objectWrapper}>Submit</button>
+        <div className="input-wrapper">
+          <label>Instructions:</label>
+          <textarea
+            name="instructions"
+            value={instructions}
+            onChange={instructionsHandler}
+            rows={10}
+            cols={40}
+          />
+        </div>
+        <button type="submit">Submit</button>
       </form>
     </div>
   );
