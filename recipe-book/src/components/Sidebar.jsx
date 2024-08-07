@@ -10,10 +10,8 @@ export default function Sidebar() {
     <div className="side-bar" style={{ height: "100%" }}>
       {List.map((item, index) => {
         return (
-          <Link to={item.func}>
-            <a className="side-button" key={index}>
-              {item.title}
-            </a>
+          <Link to={item.func} key={index}>
+            <a className="side-button">{item.title}</a>
           </Link>
         );
       })}

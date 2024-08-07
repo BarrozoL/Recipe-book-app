@@ -3,6 +3,7 @@
 import { useParams, Navigate } from "react-router-dom";
 import "./RecipeDetails.css";
 import { Link } from "react-router-dom";
+import Instruction from "./Instructions";
 
 export default function RecipeDetails({ items }) {
   const { itemId } = useParams();
@@ -24,6 +25,7 @@ export default function RecipeDetails({ items }) {
         </h2>
         <p>Calories: {selectedItem.calories}</p>
         <p>Servings: {selectedItem.servings}</p>
+        <Instruction item={selectedItem} />
       </div>
     </div>
   );

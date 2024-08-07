@@ -19,6 +19,7 @@ export default function RecipeCard({ recipe, removeItem }) {
         <p>Name: {recipe.name}</p>
         <p>Calories: {recipe.calories}</p>
         <p>Servings: {recipe.servings}</p>
+        <p>Click to see instructions...</p>
       </Link>
       <button className="del-btn" onClick={() => removeItem(recipe)}>
         🗑️
