@@ -1,68 +1,93 @@
-import "./App.css";
-import RenderRecipe from "./components/RecipePage.jsx";
-import recipes from "./assets/recipes.json";
-import Sidebar from "./components/Sidebar.jsx";
-import About from "./components/AboutPage.jsx";
-import NavBar from "./components/Navbar.jsx";
-import { Routes, Route } from "react-router-dom";
-import NotFound from "./components/NotFound.jsx";
-import RecipeDetails from "./components/RecipeDetails.jsx";
-import AddRecipePage from "./components/AddRecipePage.jsx";
-import UpdateRecipe from "./components/UpdateRecipe.jsx";
-import Footer from "./components/Footer.jsx";
-import { useState } from "react";
+import "./App.css"; /*Import the necessary CSS file for styling the "App" component */
+import RenderRecipe from "./components/RecipePage.jsx"; /* Import the "RecipePage" component */
+import recipes from "./assets/recipes.json"; /* Import recipe data from "recipes.json" */
+import Sidebar from "./components/Sidebar.jsx"; /* Import the "Sidebar" component */
+import About from "./components/AboutPage.jsx"; /* Import the "AboutPage" component */
+import NavBar from "./components/Navbar.jsx"; /* Import the "Navbar" component */
+import { Routes, Route } from "react-router-dom"; /* Import components for routing from the "react-router-dom" library  */
+import NotFound from "./components/NotFound.jsx"; /* Import the "NotFound" component */
+import RecipeDetails from "./components/RecipeDetails.jsx"; /* Import the "RecipeDetails" component */
+import AddRecipePage from "./components/AddRecipePage.jsx"; /* Import the "AddRecipePage" component */
+import UpdateRecipe from "./components/UpdateRecipe.jsx"; /* Import the "UpdateRecipe" component */
+import Footer from "./components/Footer.jsx"; /* Import the "Footer" component */
+import { useState } from "react"; /* Import "useState" hook to manage state within functional components */
 
-function App() {
-  const [data, setData] = useState(recipes);
+function App() { /* Defining "App" component */
+  const [data, setData] = useState(recipes);  /* State to manage and display the list of recipes */
+  /* The const "data" holds the current list of "recipes" */
+  /* The function "setData" updates the list of recipes
+  and triggers a re-render of the "App" component with the new data (each time is called) */
 
-  const submitHandler = (recipe) => {
-    // something
-    setData([...data, recipe]);
+  const submitHandler = (recipe) => {   /* Function to add a new recipe to the list */
+    setData([...data, recipe]); /* Adds the new recipe to the existing list */
   };
-  const removeItem = (item) =>
-    setData(data.filter((recipe) => recipe.id !== item.id));
+  /* "submitHandler" is a function passed as a prop to "AddRecipePage" function in "AddRecipePage" component */
+  /* "Recipe" is The new recipe object created in "AddRecipePage" when the form is submitted */
+  /* When the form is submitted, "submitHandler" is called with the new recipe,
+  allowing the "App" component to update its state and include the new recipe in the list */
 
-  const update = (item) => {
+  const removeItem = (item) =>  /* Function to remove a recipe */
+    setData(data.filter((recipe) => recipe.id !== item.id));
+    /* Create a new array: the "filter" method goes through each recipe in the "data" array and
+    includes only those recipes that the id does not match the id of the item passed to the function.
+    The new array formed is like a trash container array with not matched id's */
+  /* The function action occurs when gets triggered by the button with className of "del-btn" in "RecipeCard" component */
+
+  const update = (item) => {  /* Function to update a recipe */
     const updatedItem = data.map((recipe) =>
       recipe.id === item.id ? item : recipe
     );
     setData(updatedItem);
   };
+/* Creates a new array: the "map" method goes through each recipe in the "data" array and
+for each recipe, it checks if the recipe.id matches the item.id.
+If there is a match, it replaces the existing recipe with the new item (the updated recipe).
+If there is no match, it keeps the recipe unchanged */
+/* setData will be updated, and the "App" component will re-render to display the updated information. */
+  
   return (
     <div className="App">
-      <NavBar />
+      <NavBar /> {/* "NavBar" component renderization */}
       <div
         className="RenderPage"
         style={{
-          width: document.body.offsetWidth - 300,
-          height: document.body.offsetHeight - 130,
-          bottom: 50,
+          width: document.body.offsetWidth - 300, /* Adjusts the width of the "div" to be the full width of the body less 300 pixels.*/
+          height: document.body.offsetHeight - 130, /* Adjusts the height of the "div" to be the full height of the body less 130 pixels */
+          bottom: 50, /* Set the bottom "offset" of the "div to 50 pixels.
+          Sets a vertical "offset" from the bottom edge. It ensures that the "div" maintains a consistent margin from the bottom,
+          allowing space for the "Footer" component */
         }}
       >
-        <Routes>
+        <Routes>  {/* Defining "Routes" to render different components based on the URL path */}
           <Route
             path="/"
-            element={<RenderRecipe recipes={data} removeItem={removeItem} />}
+            element={<RenderRecipe recipes={data} removeItem={removeItem} />} /* Renders the  */
           />
-          <Route path="/about" element={<About />} />
+          <Route path="/about" element={<About />} /> {/* Renders the About page */}
           <Route
             path="/item/:itemId/update"
-            element={<UpdateRecipe data={data} update={update} />}
+            element={<UpdateRecipe data={data} update={update} />} /* Renders the "UpdateRecipe" component */
           />
           <Route
             path="/item/:itemId"
-            element={<RecipeDetails items={data} />}
+            element={<RecipeDetails items={data} />} /* Renders the "RecipePage" component*/
           />
           <Route
             path="/add-recipe"
-            element={<AddRecipePage submitHandler={submitHandler} />}
+            element={<AddRecipePage submitHandler={submitHandler} />}  /* Renders the "AddRecipePage" component */
           />
-          <Route path="*" element={<NotFound />} />
+          <Route path="*" element={<NotFound />} /> {/* Renders the "NotFound" component */}
         </Routes>
       </div>
-      <Sidebar />
-      <Footer />
+      <Sidebar /> {/* Renders the "Sidebar" component */}
+      <Footer /> {/* Renders the "Footer" component */}
     </div>
+    /* The order of placing components matter, for example, put "Footer" before the "NavBar" will affect the layout and
+    behavior of the page, however, with CSS "position: fixed;" the "HTML" order doesn't matter for visual placement,
+    but it does matter for document structure and accessibility */
+    
+    /* Separating "Navbar", "Sidebar" and "Footer" from the "div" with className "RenderPage" alows the individual layout,
+    positioning and styling CSS of these components */    
   );
 }
-export default App;
+export default App; /* Exporting "App" component */

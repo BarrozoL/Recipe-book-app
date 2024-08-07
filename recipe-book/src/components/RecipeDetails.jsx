@@ -1,4 +1,9 @@
-/*Item Details Page (Recipe Details) - A page that displays all the details of an item selected from the items list.*/
+/*Item Details Page "RecipeDetails" - A page that displays all the details of an item selected from the items list */
+
+/* The "RecipeDetails" component fetch and display the details of a specific recipe based on the URL parameter itemId.
+It navigates to a "not found" page if the recipe doesn't exist and provides a link for updating the recipe. */
+
+
 
 import { useParams, Navigate } from "react-router-dom";
 import "./RecipeDetails.css";

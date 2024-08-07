@@ -1,3 +1,9 @@
+/* The "UpdateRecipe" component allows users to update an existing recipe's details.
+It retrieves the recipe to be updated based on the route parameter, manages form state for the updated information
+and updates the recipe in the list of reciepes after form submission. */
+
+
+
 import { useParams, Navigate, useNavigate } from "react-router-dom";
 import { useState } from "react";
 
